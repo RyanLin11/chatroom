@@ -1,0 +1,9 @@
+.bar {
+    display: flex;
+    padding: .3em;
+}
+
+input[type='text'] {
+    flex-grow: 1;
+    margin-right: .3em;
+}

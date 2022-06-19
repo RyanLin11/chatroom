@@ -1,0 +1,36 @@
+.profile-image {
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    margin-left: .5em; /* depends on incoming */
+}
+
+.message {
+    padding: .5em;
+    margin: 0;
+    text-align: left;
+}
+
+.author-name {
+    color: grey;
+    font-size: .8em;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5em;
+    text-align: right; /* depends on incoming */
+}
+
+.comment-container {
+    display: flex;
+    flex-direction: row; /* depends on incoming */
+    justify-content: end; /* depends on incoming, and switches */
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: end; /* depends on incoming */
+    flex-grow: 1;
+}
