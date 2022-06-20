@@ -1,4 +1,4 @@
-import axios from '../BaseService';
+import axios from './BaseService';
 
 export const getComments = async (channelId) => {
     let comments = await axios.get(`/comments?channel=${channelId}`);

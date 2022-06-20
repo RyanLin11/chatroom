@@ -1,4 +1,4 @@
-import axios from '../BaseService';
+import axios from './BaseService';
 
 export const getChannels = async () => {
     let channels = await axios.get('/channels');

@@ -26,8 +26,8 @@ function LoginView(props) {
 
     return (
         <Box component="form" noValidate autoComplete="off">
-            <TextField id='outlined-basic' label='Username' name='username' value={username} onChange={onChange}/>
-            <TextField id='outlined-password-input' label='Password' type='password' name='password' value={password} onChange={onChange} />
+            <TextField id='outlined-basic' label='Username' name='username' value={user.username} onChange={onChange}/>
+            <TextField id='outlined-password-input' label='Password' type='password' name='password' value={user.password} onChange={onChange} />
             <Button variant='outlined' onClick={onSubmit}>Login</Button>
         </Box>
     )

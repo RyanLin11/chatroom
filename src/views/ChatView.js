@@ -1,8 +1,7 @@
-import Comment from './components/Comment';
-import InputBar from './components/InputBar';
+import Comment from '../components/Comment';
+import InputBar from '../components/InputBar';
 import Container from '@mui/material/Container';
-import React, { useEffect } from 'react';
-import 'ChatView.css';
+import React, { useEffect, useState } from 'react';
 import { getComments } from '../services/CommentService';
 import { useParams } from "react-router-dom";
 import { useAuth } from '../auth/AuthProvider';

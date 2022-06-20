@@ -1,7 +1,7 @@
-import React, { useState, CreateContext } from 'react';
+import React, { useState, createContext } from 'react';
 import { login, logout } from '../services/UserService';
 
-let AuthContext = CreateContext(null);
+let AuthContext = createContext(null);
 
 export function AuthProvider(props) {
     let [user, setUser] = useState(null);
@@ -18,7 +18,7 @@ export function AuthProvider(props) {
 
     let value = { user, signin, signout };
 
-    return <AuthContext.Provider value={value}> {children} </AuthContext.Provider>;
+    return <AuthContext.Provider value={value}> {props.children} </AuthContext.Provider>;
 }
 
 export function useAuth() {

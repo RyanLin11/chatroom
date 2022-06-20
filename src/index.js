@@ -10,7 +10,7 @@ import ChatView from './views/ChatView';
 import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
 
-import RequireAuth from './Auth/RequireAuth';
+import RequireAuth from './auth/RequireAuth';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

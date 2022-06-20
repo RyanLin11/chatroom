@@ -1,7 +1,7 @@
-import axios from '../BaseService';
+import axios from './BaseService';
 
-export const register = async (user) => {
-    const user = await axios.post('/auth/register', user);
+export const register = async (newUser) => {
+    const user = await axios.post('/auth/register', newUser);
     return user;
 }
 
