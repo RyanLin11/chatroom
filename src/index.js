@@ -22,7 +22,7 @@ root.render(
           <Route path="/channels" element={<RequireAuth><ChatListView /></RequireAuth>} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/register" element={<RegisterView />} />
-          <Route path="/:channelId" element={<RequireAuth><ChatView /></RequireAuth>} />
+          {/*<Route path="/:channelId" element={<RequireAuth><ChatView /></RequireAuth>} />*/}
         </Route>
       </Routes>
     </BrowserRouter>

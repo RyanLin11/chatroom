@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { getComments } from '../services/CommentService';
 import { useParams } from "react-router-dom";
 import { useAuth } from '../auth/AuthProvider';
+import './ChatView.css';
 
 function ChatView(props) {
     const [comments, setComments] = useState([]);
@@ -19,7 +20,7 @@ function ChatView(props) {
         <React.Fragment>
             <Container className='comments-container'>
                 {
-                    comments.map(comment => {
+                    comments && comments.map(comment => {
                         <Comment text={comment.text} inbound={auth.user === comment.sender} />
                     })
                 }

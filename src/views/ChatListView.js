@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 function ChatListView(props) {
     const [channels, setChannels] = useState(null);
     
-    useEffect(async () => {
+    useEffect(() => {
         setChannels(getChannels());
     }, []);
 
@@ -20,7 +20,7 @@ function ChatListView(props) {
         <React.Fragment>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 {
-                    channels.map(channel => {
+                    Array.isArray(channels) && channels.map(channel => {
                         <React.Fragment>
                             <Link to={`${channel._id}`}>
                                 <ListItem alignItems="flex-start">

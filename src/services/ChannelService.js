@@ -6,7 +6,7 @@ export const getChannels = async () => {
 }
 
 export const addMember = async (channelId, newMemberId) => {
-    let newMember = await axios.post(`/channels/${channelId}?user=${newMemberId}`);
+    let newMember = await axios.post(`/channels/${channelId}`, {params: {user: newMemberId}});
     return newMember;
 }
 
