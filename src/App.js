@@ -8,7 +8,9 @@ function App() {
     <AuthProvider>
       <div className="App">
         <Navbar className='bar' />
-        <Outlet />
+        <div className='content-container'>
+          <Outlet />
+        </div>
       </div>
     </AuthProvider>
   );

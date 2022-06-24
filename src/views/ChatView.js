@@ -1,6 +1,7 @@
 import Comment from '../components/Comment';
 import InputBar from '../components/InputBar';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import React, { useEffect, useState } from 'react';
 import { getComments } from '../services/CommentService';
 import { useParams } from "react-router-dom";
@@ -17,7 +18,7 @@ function ChatView(props) {
     }, []);
 
     return (
-        <React.Fragment>
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
             <Container className='comments-container'>
                 {
                     Array.isArray(comments) && comments.map(comment => {
@@ -26,7 +27,7 @@ function ChatView(props) {
                 }
             </Container>
             <InputBar />
-        </React.Fragment>
+        </Box>
     )
 }
 

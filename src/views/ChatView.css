@@ -1,7 +1,13 @@
 .comments-container {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    overflow-y: scroll;
-    flex-grow: 1;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: '80px';
+}

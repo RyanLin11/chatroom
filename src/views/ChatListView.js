@@ -12,13 +12,17 @@ function ChatListView(props) {
         auth.user.channels.push(newChannel);
     }
 
+    function leaveChannel(channel) {
+        auth.user.channels = auth.user.channels.filter(c => c._id != channel);
+        
+    }
+
     useEffect(() => {
-        console.log(Array.isArray(channels));
         setChannels(auth.user.channels);
     });
 
     return (
-        <React.Fragment>
+        <div>
             <ChannelForm addChannel={addChannel} />
             <List sx={{ width: 360, maxWidth: 360, bgcolor: 'background.paper' }}>
                 {channels.map(channel => 
@@ -45,7 +49,7 @@ function ChatListView(props) {
                         </ListItem>)
                 )}
             </List>
-        </React.Fragment>
+        </div>
     )
 }
 
