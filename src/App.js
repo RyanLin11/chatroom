@@ -8,7 +8,7 @@ function App() {
     <AuthProvider>
       <div className="App">
         <Navbar className='bar' />
-          <Outlet />
+        <Outlet />
       </div>
     </AuthProvider>
   );

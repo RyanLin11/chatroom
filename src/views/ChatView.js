@@ -20,7 +20,7 @@ function ChatView(props) {
         <React.Fragment>
             <Container className='comments-container'>
                 {
-                    comments && comments.map(comment => {
+                    Array.isArray(comments) && comments.map(comment => {
                         <Comment text={comment.text} inbound={auth.user === comment.sender} />
                     })
                 }

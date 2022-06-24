@@ -14,7 +14,7 @@ function Navbar(props) {
     let navigate = useNavigate();
 
     async function onLogout(e) {
-        await auth.logout();
+        await auth.signout();
         navigate('../login');
     }
 

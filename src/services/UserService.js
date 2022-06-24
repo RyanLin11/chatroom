@@ -16,5 +16,10 @@ export const logout = async () => {
 
 export const getUsers = async () => {
     const users = await axios.get('/users');
-    return users;
+    return users.data;
+}
+
+export const getUser = async (user_id) => {
+    const user = await axios.get(`/users/${user_id}`);
+    return user;
 }

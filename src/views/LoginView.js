@@ -5,14 +5,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useAuth } from '../auth/AuthProvider';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function LoginView(props) {
     const [user, setUser] = useState({
         username: "",
         password: ""
     });
-    let navigate = useNavigate();
     let auth = useAuth();
 
     function onChange(e) {
@@ -24,7 +22,6 @@ function LoginView(props) {
 
     async function onSubmit(e) {
         await auth.signin(user.username, user.password);
-        //navigate("../channels");
     }
 
     return (

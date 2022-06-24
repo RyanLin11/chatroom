@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../auth/AuthProvider';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
@@ -14,7 +13,6 @@ function RegisterView(props) {
         password: ""
     });
     let navigate = useNavigate();
-    let auth = useAuth();
 
     function onChange(e) {
         setUser({
