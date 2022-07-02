@@ -1,4 +1,5 @@
 import './Comment.css';
+import { Avatar, Box } from '@mui/material';
 
 const commentStyles = {
     borderRadius: '.5em',
@@ -17,15 +18,15 @@ const inboundTheme = {
 
 function Comment(props) {
     return (
-        <div className='comment-container' style={{flexDirection: props.inbound? 'row-reverse': 'row'}}>
-            <div className='description' style={{alignItems: props.inbound? 'start':'end'}}>
+        <Box sx={{ display: 'flex', flexDirection: props.inbound? 'row-reverse':'row', justifyContent: 'end', alignItems: 'center', marginBottom: '1em' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: props.inbound? 'start':'end', flexGrow: 1 }}>
                 <p className='author-name' style={{textAlign: props.inbound? 'left': 'right'}}>{props.message.sender?.username || 'Anonymous'}</p>
-                <div style={ Object.assign({}, commentStyles, props.inbound? inboundTheme : outboundTheme) }>
+                <Box sx={ Object.assign({}, commentStyles, props.inbound? inboundTheme : outboundTheme) }>
                     <p className='message'>{props.message.text}</p>
-                </div>
-            </div>
-            <img className='profile-image' style={props.inbound? {marginRight:'.5em'} : {marginLeft:'.5em'}} src={'https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} />
-        </div>
+                </Box>
+            </Box>
+            <Avatar style={props.inbound? {marginRight:'.5em'} : {marginLeft:'.5em'}} src='defaultprofileimg.png' />
+        </Box>
     )
 }
 

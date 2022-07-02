@@ -5,16 +5,20 @@ export const getChannels = async () => {
     return channels.data;
 }
 
-export const addChannel = async (participants) => {
-    let newChannel = await axios.post('/channels', {participants});
-    return newChannel;
+export const addChannel = async (channelInfo, admin) => {
+    let newChannel = await axios.post('/channels', {...channelInfo, admin} );
+    return newChannel.data;
 }
 
 export const addMember = async (channelId, newMemberId) => {
     let newMember = await axios.post(`/channels/${channelId}`, {params: {user: newMemberId}});
-    return newMember;
+    return newMember.data;
 }
 
 export const leaveChannel = async (channelId) => {
     await axios.post(`/channels/${channelId}/leave`);
+}
+
+export const deleteChannel = async (channelId) => {
+    await axios.delete(`/channels/${channelId}`);
 }

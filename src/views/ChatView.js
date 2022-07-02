@@ -6,7 +6,6 @@ import { getComments, postComment } from '../services/CommentService';
 import { useParams } from "react-router-dom";
 import { useAuth } from '../auth/AuthProvider';
 import socket from '../services/Sockets';
-import './ChatView.css';
 
 function ChatView(props) {
     const [comments, setComments] = useState([]);
@@ -34,8 +33,8 @@ function ChatView(props) {
     }
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
-            <Container className='comments-container'>
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>
+            <Container sx={{ flexGrow: 1 }}>
                 {
                     comments.map(comment => (
                         <Comment key={comment._id} message={comment} inbound={auth.user._id !== comment.sender._id} />

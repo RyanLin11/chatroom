@@ -1,5 +1,4 @@
-import { Button, FormControl, Input, Box } from '@mui/material';
-import './InputBar.css';
+import { Button, TextField, Box } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
 
@@ -16,12 +15,16 @@ function InputBar(props) {
     }
 
     return (
-        <FormControl sx={{ display: 'flex', padding: '.3em' }}>
-            <Input type='text' sx={{ flexGrow: 1, margin: '.3em' }} value={ message } onChange={ handleChange } placeholder='Type your message here...' />
-            <Button variant='contained' onClick={handleSubmit}>
-                <SendIcon />
-            </Button>
-        </FormControl>
+        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: 1 }}>
+            <Box sx={{ flexGrow: 1 }}>
+                <TextField sx={{ width: 1 }} value={ message } onChange={ handleChange } placeholder='Type your message here...' />
+            </Box>
+            <Box sx={{ flexGrow: 0 }}>
+                <Button variant='contained' onClick={ handleSubmit }>
+                    <SendIcon />
+                </Button>
+            </Box>
+        </Box>
     )
 }
 

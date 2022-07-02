@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FormControl, Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, InputLabel, OutlinedInput, Box, Chip } from '@mui/material';
+import { TextField, FormControl, Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, InputLabel, OutlinedInput, Box, Chip } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { getUsers } from '../services/UserService';
-import { addChannel } from '../services/ChannelService';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,8 +26,11 @@ function getStyles(name, personName, theme) {
 function ChannelForm(props) {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-    const [participants, setParticipants] = useState([]);
     const [users, setUsers] = useState([]);
+    const [data, setData] = useState({
+        name: '',
+        participants: [],
+    })
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -39,13 +41,12 @@ function ChannelForm(props) {
     };
 
     const handleChange = (event) => {
-        const {target: {value}} = event;
-        setParticipants(typeof value === 'string'? value.split(',') : value);
+        const {target} = event;
+        setData({...data, [target.name]: target.value});
     }
 
     const handleSubmit = async (event) => {
-        const newChannel = await addChannel(participants);
-        props.addChannel(newChannel);
+        await props.addChannel(data);
         handleClose();
     }
 
@@ -64,35 +65,41 @@ function ChannelForm(props) {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add Group Chat</DialogTitle>
                 <DialogContent>
-                    <FormControl sx={{ m: 1, width: 300 }}>
-                        <InputLabel id='participants-label'> Participants </InputLabel>
-                        <Select
-                            labelId='participants-label'
-                            id='participants-input'
-                            multiple
-                            value={participants}
-                            onChange={handleChange}
-                            input={<OutlinedInput id='participants-input' label='Participants' />}
-                            renderValue={(selected) => (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5}}>
-                                    {selected.map((value) => (
-                                        <Chip key={value} label={users.find(user => user._id === value).username} />
-                                    ))}
-                                </Box>
-                            )}
-                            MenuProps={MenuProps}
-                            >
-                            {Array.isArray(users) && users.map((user) => (
-                                <MenuItem
-                                    key={user._id}
-                                    value={user._id}
-                                    style={getStyles(user._id, users.map(user=>user._id), theme)}
+                    <Box sx={{ display: 'flex', flexDirection: 'column'}}>
+                        <FormControl sx={{ m: 1, width: 300 }}>
+                            <TextField label='Chat Name' variant='outlined' name='name' value={data.name} onChange={handleChange} />
+                        </FormControl>
+                        <FormControl sx={{ m: 1, width: 300 }}>
+                            <InputLabel id='participants-label'> Participants </InputLabel>
+                            <Select
+                                labelId='participants-label'
+                                id='participants-input'
+                                multiple
+                                name='participants'
+                                value={data.participants}
+                                onChange={handleChange}
+                                input={<OutlinedInput id='participants-input' label='participants' labelId='participants-label' />}
+                                renderValue={(selected) => (
+                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5}}>
+                                        {selected.map((value) => (
+                                            <Chip key={value} label={users.find(user => user._id === value).username} />
+                                        ))}
+                                    </Box>
+                                )}
+                                MenuProps={MenuProps}
                                 >
-                                    {user.username}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
+                                {Array.isArray(users) && users.map((user) => (
+                                    <MenuItem
+                                        key={user._id}
+                                        value={user._id}
+                                        style={getStyles(user._id, users.map(user=>user._id), theme)}
+                                    >
+                                        {user.username}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </Box>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
